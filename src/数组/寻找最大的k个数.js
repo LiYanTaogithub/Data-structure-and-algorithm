@@ -37,11 +37,13 @@ function getLeastNumbers(arr, k){
     for(let i = 0; i < k; i++){
         res[i] = arr[i]
     }
+    console.log(res);
     return res;
 }
 
 function partitionArray(arr, low, high, k){
     let m = partition(arr, low, high);
+    console.log('m',m);
     if(k === m) return;
     else if (k < m) partitionArray(arr, 0, m-1, k);
     else partitionArray(arr, m+1, high, k)
@@ -51,9 +53,9 @@ function partition(arr, low, high){
     let j = high+1;
     let v = arr[low]; 
     while(true){
-        while(arr[++i] < v && i === high) break; // 左边比 v 大的不用管
-        while(arr[--j] > v && j === low) break; // 右边比 v 小的不用管
-        if(i >= j) break;
+        while(arr[++i] < v && i === high) break; // 左边比 v 小的交换
+        while(arr[--j] > v && j === low) break; // 右边比 v 大的交换
+        if(i > j) break;
         //右边比 v 大的交换，左边比 v 小的交换
         swap(arr, i, j)
     }
@@ -68,6 +70,4 @@ function swap(arr, i, j){
     arr[j] = temp;
 }
 
-getLeastNumbers([5, 4, 3, 6, 9, 7, 2, 8], 5);
-
-
+getLeastNumbers([5, 4, 3, 6, 9, 7, 2, 8], 4);

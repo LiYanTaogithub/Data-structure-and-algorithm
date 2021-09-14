@@ -26,13 +26,15 @@
             while (left < right) {
                 console.log('left',left)
                 console.log('right', right)
-                console.log('hashMap', hashMap)
+                console.log('删除前的hashMap', hashMap)
                 // 不断缩小窗口左边
                 delete hashMap[s[left]]
+                console.log('删除后的hashMap', hashMap)
                 // 先删除后比较
                 // console.log('hashMap[s[left++]] !== hashMap[s[right]]', hashMap[s[left++]], hashMap[s[right]])
-                if (hashMap[s[left++]] !== hashMap[s[right]]) {
-                    console.log('break');
+                if (hashMap[s[left++]] !== hashMap[s[right]]) { // 不相等了就退出 while
+                    // console.log('hashMap[s[left++]]，hashMap[s[right]], break', hashMap[s[left++]], hashMap[s[right]]);
+                    console.log('break') // TODO: 不明白这个 break 是干啥的
                     break;
                 }
             }
@@ -44,4 +46,22 @@
     }
     return maxLength
 }
-lengthOfLongestSubstring("abcabcbb");
+// lengthOfLongestSubstring("abcddbcbb");
+
+// 方法二：map映射出现的位置
+
+function lengthOfLongestSubstring2(s){
+    let map = new Map();
+    let curIndex = 0; // 从哪个小标开始计数无重复的长度
+    let maxLen = 0;
+    for(let i = 0; i < s.length; i++){
+        if(map.get(s[i])){
+            curIndex = map.get(s[i]) + 1;
+        }
+        maxLen = Math.max(maxLen, i - curIndex + 1);
+        map.set(s[i], i)
+    }
+    console.log(maxLen);
+    return maxLen;
+}
+lengthOfLongestSubstring2("abcdefdbcbb");
