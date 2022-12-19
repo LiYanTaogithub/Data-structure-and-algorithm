@@ -25,4 +25,5 @@ var maxProfit = function(prices) {
         max = Math.max(max, prices[i] - min)
         min = Math.min(min, prices[i])
     }
+    return max
 }

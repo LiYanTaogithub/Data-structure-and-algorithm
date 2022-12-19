@@ -7,15 +7,30 @@ var reverseWords = function(s) {
     let res = '';
     while( i >= 0){
         while( i >= 0 && s[i] === ' ') i--;   // 找到了空格，说明再向前一个就是一个单词的开始
-        let j = i; // 单词扫描开始 .tneduts .
-        while( i >= 0 && s[i] !== ' ') i--; // 没找到空格继续向前找
-        // 跳出这个while 的时候就是一个单词扫描完成了 s
+        let j = i; // 单词扫描的末尾 .   .tneduts .
+        while( i >= 0 && s[i] !== ' ') i--; // 找到下一个空格，单词扫描的结束 s
+        // 跳出这个while的时候就是一个单词扫描完成了 s  student. 
         if(i<j){
             res += s.substr(i+1, j-i);
             res += ' ' // 加上空格
         }
     }
     console.log('res', res);
-    return res.substr(0, res.length -1)
+    return res.slice(0, res.length -1)
 };
 reverseWords("I am a student. ");
+
+function reverseWords(s) {
+    if(s.length < 1) return s
+    let i = s.length - 1; res = ''
+    while(i >= 0) {
+        while(i >= 0 && s[i] === ' ') i--
+        let j = i
+        while(i >= 0 && s[i] !== ' ') i--
+        if(i < j) {
+            res+= s.substr(i+1, j - 1)
+            res +=' '
+        }
+    }
+    return res
+}

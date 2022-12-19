@@ -51,7 +51,7 @@ function partitionArray(arr, low, high, k){
 function partition(arr, low, high){
     let i = low;
     let j = high+1;
-    let v = arr[low]; 
+    let v = arr[low];
     while(true){
         while(arr[++i] < v && i === high) break; // 左边比 v 小的交换
         while(arr[--j] > v && j === low) break; // 右边比 v 大的交换

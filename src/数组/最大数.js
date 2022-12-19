@@ -22,3 +22,21 @@
 输入：nums = [10]
 输出："10"
  */
+function PrintMinNumber(numbers) {
+    var result = "";
+    for(let i = 0; i < numbers.length; i++){
+        for(let j = i+1; j < numbers.length; j++){
+            let s1 = numbers[i] + '' + numbers[j]
+            let s2 = numbers[j] + '' + numbers[i]
+            if(s1 > s2){
+                let temp = numbers[i]
+                numbers[i] = numbers[j]
+                numbers[j] = temp
+            }
+        }
+    }
+    for (let m = 0; m < numbers.length; m++) {
+        result = result + numbers[m];
+    }
+    return result;
+}

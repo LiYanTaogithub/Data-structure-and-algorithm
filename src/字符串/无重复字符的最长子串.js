@@ -24,17 +24,11 @@
             // 找到重复的值，此时应该左边缩小窗口，但要缩小后的窗口里面的值不是重复的
             // 如果有，继续缩小，周而复始
             while (left < right) {
-                console.log('left',left)
-                console.log('right', right)
-                console.log('删除前的hashMap', hashMap)
                 // 不断缩小窗口左边
                 delete hashMap[s[left]]
-                console.log('删除后的hashMap', hashMap)
                 // 先删除后比较
                 // console.log('hashMap[s[left++]] !== hashMap[s[right]]', hashMap[s[left++]], hashMap[s[right]])
                 if (hashMap[s[left++]] !== hashMap[s[right]]) { // 不相等了就退出 while
-                    // console.log('hashMap[s[left++]]，hashMap[s[right]], break', hashMap[s[left++]], hashMap[s[right]]);
-                    console.log('break') // TODO: 不明白这个 break 是干啥的
                     break;
                 }
             }
@@ -42,7 +36,6 @@
         // 每一轮循环过后
         // 窗口的长度怎么计算right-left
         maxLength = Math.max(maxLength, right - left)
-        console.log('max length', maxLength);
     }
     return maxLength
 }
@@ -65,3 +58,23 @@ function lengthOfLongestSubstring2(s){
     return maxLen;
 }
 lengthOfLongestSubstring2("abcdefdbcbb");
+
+// 没有重复时调整右边界，有重复时调整左边界
+function lengthOfLongestSubstring2(s) {
+    let i = 0; j = 0; maxLength = 0
+    let set = new Set()
+    if(s.length === 0) return 0
+    for(let j = 0; j < s.length; j++) {
+        if(!set.has(s[j])) {
+            set.add(s[j])
+            maxLength = Math.max(maxLength, set.size)
+        }else {
+            while(set.has(s[j])) {
+                set.delete(s[j])
+                i++
+            }
+            set.add(s[j])
+        }
+    }
+    return maxLength
+}

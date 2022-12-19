@@ -18,7 +18,7 @@
 假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。
  */
 
-var strToInt = function(str) { 
+var strToInt = function(str) {
     let res = 0;
     let i = 0;
     let isMinus = false; // 记录是否为负号

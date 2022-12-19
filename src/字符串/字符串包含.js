@@ -49,5 +49,3 @@ function stringContain(a, b){
 }
 console.log(stringContain('ABCDE', 'BCD'))
 console.log(stringContain('ABCDE', 'BCF'))
-
-    
