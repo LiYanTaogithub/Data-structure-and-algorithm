@@ -15,6 +15,18 @@ function Fibonacci(n){
     return f1
 }
 
+// 动态规划解法：自底向上
+const fib = (n) => {
+    let db = []
+    dp[0] = 1
+    dp[1] = 1
+    for(let i = 2; i < n.length; i++) {
+        dp[i] = db[i-1] + dp[i-2]
+    }
+    return dp[n]
+}
+
+
 function red(){
     console.log('red')
 }
