@@ -50,14 +50,5 @@ function reverseString(s, from, to){
     }
     console.log('res',res);
     return res;
-    // while(from < to){
-    //     console.log('from, to', from, to);
-    //     let t = s[from]
-    //     console.log('t', t);
-    //     s[from] = s[to]
-    //     s[to] = t
-    //     console.log(s);
-    //     from++, to--;
-    // }
 }
 rotateString('abcdefg', 4);

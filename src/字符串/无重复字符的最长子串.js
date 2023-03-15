@@ -9,7 +9,7 @@
  * @param {string} s
  * @return {number}
  */
- var lengthOfLongestSubstring = function (s) {
+ var lengthOfLongestSubstring1 = function (s) {
     // 窗口的长度怎么计算right-left
     let left = 0
     let right = 0
@@ -50,17 +50,19 @@ function lengthOfLongestSubstring2(s){
     for(let i = 0; i < s.length; i++){
         if(map.get(s[i])){
             curIndex = map.get(s[i]) + 1;
+            console.log('curIndex', curIndex, 'i - curIndex + 1', i - curIndex + 1)
         }
         maxLen = Math.max(maxLen, i - curIndex + 1);
+        console.log(maxLen);
         map.set(s[i], i)
+        console.log('map', map)
     }
-    console.log(maxLen);
     return maxLen;
 }
-lengthOfLongestSubstring2("abcdefdbcbb");
+lengthOfLongestSubstring2("abacdfdbcbb");
 
 // 没有重复时调整右边界，有重复时调整左边界
-function lengthOfLongestSubstring2(s) {
+function lengthOfLongestSubstring3(s) {
     let i = 0; j = 0; maxLength = 0
     let set = new Set()
     if(s.length === 0) return 0

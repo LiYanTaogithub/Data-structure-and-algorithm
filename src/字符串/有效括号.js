@@ -25,7 +25,7 @@
  * 如果能拿到值就代表是左边括号，将左括号对应的右括号放入栈中，
  * 如果拿不到值就代表是右括号，看看栈顶元素是否和当前右括号匹配
  * 匹配就出栈，否则return false 结束循环
- * 
+ *
  */
 var isValid = function(s) {
     let map = {
@@ -38,7 +38,7 @@ var isValid = function(s) {
         if(map[s[i]]){
             res.push(map[s[i]])
         }else{
-            if(map[res.pop() !== s[i]]) return false
+            if(map[res.pop()] !== s[i]) return false
         }
     }
     return res.length === 0

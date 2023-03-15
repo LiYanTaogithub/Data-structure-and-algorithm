@@ -11,6 +11,8 @@ function searchRange(nums, target) {
   let res = []
   res[0] = leftSearch(nums, target)
   res[1] = rightSearch(nums, target)
+  console.log('res', res)
+  return res
 
   function leftSearch(nums, target) {
     let left = 0; right = nums.length - 1
@@ -42,3 +44,4 @@ function searchRange(nums, target) {
     return -1
   }
 }
+searchRange([5,7,7,8,8,10], 8)

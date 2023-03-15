@@ -8,12 +8,16 @@
 [-1, 0, 1],
 [-1, -1, 2]
 ]
-解题思路：
+//! 解题思路：排序 + 双指针, 本题的难点在于如何去除重复解。
+
 三个数之和，要么是依次遍历数组三个数相加看是否等于0，但是这种方法算法复杂度等于O(n^3)，有点复杂。
 还有一种思路是先对数组进行一次排序，然后找一个固定值，nums[i]，然后设置两个指针，left=i+1，right = nums.length -1,
 两个指针一起循环，如果三个数的和等于0那就存放，如果大于0，就让尾指针 right 向前走，如果小于0，就让头指针 left 向前走。（这块建议自己在纸上画一画，先对数组排序，然后固定一个值，从设置头尾指针进行遍历）
- */
 
+
+*/
+nums =
+[-2,0,1,1,2]
 var threeSum = function(nums) {
     //设置变量
     let result = []
@@ -24,10 +28,10 @@ var threeSum = function(nums) {
     nums.sort( (a,b) => {
         return a-b
     })
-    //判断数组内的元素是否都大于0，或者都小于0，就直接返回
+    //判断数组内的元素是否都大于0，或者都小于0，就直接返回，如果第一个大于0或者最后一个小于0就不可能出现三数之和是0的情况
     if(nums[0] > 0 || nums[nums.length-1]<0) return result
     //开始遍历
-    for (let i =0; i < nums.length; i++) {
+    for (let i = 0; i < nums.length; i++) {
         fixedValue = nums[i]
         if(fixedValue == nums[i-1]) continue
         left = i+1
@@ -45,12 +49,12 @@ var threeSum = function(nums) {
                 //指针向前移动
                 left ++
                 right --
-                //1.2移动后的指针和移动前的指针元素相等，再往前移动
-                while(left < right && nums[left] === nums[right - 1]){
+                //!去重 1.2移动后的指针和移动前的指针元素相等，再往前移动
+                while(left < right && nums[left] === nums[left - 1]){
                     left += 1;
                 }
-                //1.3移动后的指针和移动前的指针元素相等，再往后移动
-                while(left < right && nums[left] === nums[left + 1]){
+                //!去重 1.3移动后的指针和移动前的指针元素相等，再往后移动
+                while(left < right && nums[right] === nums[right + 1]){
                     right -= 1;
                 }
             }

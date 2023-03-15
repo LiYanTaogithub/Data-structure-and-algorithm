@@ -12,8 +12,9 @@ function longCommonPrefix(strs) {
   let prefix = strs[0]
   console.log('prefix', prefix)
   for(let i = 1; i < strs.length; i++) {
+    console.log('i', i)
     while(strs[i].indexOf(prefix) === -1) {
-      prefix = prefix.substring(0, prefix.length - 1) // 不存在就删减然后再次进行比较
+      prefix = prefix.substring(0, prefix.length - 1) // 不存在就删减然后再次进行比较 dog\do\d 或者 flower、flowe、flow、flo、fl
       console.log('删减后的prefix', prefix)
     }
   }
@@ -22,4 +23,4 @@ function longCommonPrefix(strs) {
 }
 let strs = ["flower","flow","flight"]
 let strs2 = ["dog","racecar","car"]
-longCommonPrefix(strs2)
+longCommonPrefix(strs)

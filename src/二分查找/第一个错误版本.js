@@ -1,7 +1,7 @@
 function VersionControl(n) {
   let left = 0; right = n
   while(left < right) {
-    let mid = left + (mid - left) / 2
+    let mid = left + (right - left) / 2
     if(isBadVersion(mid)) {
       right = mid
     }else {
